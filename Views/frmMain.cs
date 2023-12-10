@@ -129,5 +129,17 @@ namespace Views
             f.MdiParent = this;
             f.Show();
         }
+
+        private void tsLop_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void khóaHọcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmKhoaHoc f = new frmKhoaHoc();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

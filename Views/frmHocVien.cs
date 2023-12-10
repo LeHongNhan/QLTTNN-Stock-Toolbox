@@ -7,7 +7,9 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,11 +25,17 @@ namespace Views
         {
             InitializeComponent();
         }
-
+        private bool IsValidEmail(string email)
+        {
+            // Biểu thức chính quy kiểm tra định dạng email
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
+        }
         void loadThongTin()
         {
             ds.Tables.Clear();
-            adapter = helper.GetDataAdapter("Select HocSinhID as N'Mã học viên', Ho as N'Họ', Ten as N'Tên', email as N'Email', NgaySinh as N'Ngày sinh', SoDienThoai as N'Số điện thoại', DiaChi as N'Địa chỉ' from HocSinh");
+            adapter = helper.GetDataAdapter("Select Ho as N'Họ', Ten as N'Tên', email as N'Email', NgaySinh as N'Ngày sinh', SoDienThoai as N'Số điện thoại', DiaChi as N'Địa chỉ' from HocSinh");
             adapter.Fill(ds, "HocSinh");
             dgvDS.DataSource = ds.Tables["HocSinh"];
         }
@@ -61,51 +69,85 @@ namespace Views
             row["Họ"] = txtHo.Text;
             row["Tên"] = txtTen.Text;
             row["Email"] = txtEmail.Text;
-            row["Ngày sinh"] = mtxtNgaySinh.Text;
+            row["Ngày sinh"] = dtpNgaySinh.Text;
             row["Số điện thoại"] = txtSdt.Text;
             row["Địa chỉ"] = txtDiaChi.Text;
-            ds.Tables["HocSinh"].Rows.Add(row);
-            SqlCommandBuilder b = new SqlCommandBuilder(adapter);
-            adapter.Update(ds.Tables["HocSinh"]);
+            
+            if (!IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Địa chỉ email không hợp lệ!");
+                return;
+            }
+            if (txtSdt.Text.Length != 10)
+            {
+                MessageBox.Show("Kiểm tra số điện thoại");
+                return;
+            }
+            else
+            {
+                ds.Tables["HocSinh"].Rows.Add(row);
+                SqlCommandBuilder b = new SqlCommandBuilder(adapter);
+                adapter.Update(ds.Tables["HocSinh"]);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DataRow row = ds.Tables["HocSinh"].Rows[vt];
-            ds.Tables["HocSinh"].Rows.Remove(row);
-            SqlCommandBuilder b = new SqlCommandBuilder(adapter);
 
-            int kq = adapter.Update(ds.Tables["HocSinh"]);
-            if (kq > 0)
+            try
             {
-                loadThongTin();
-                MessageBox.Show("Xóa không được");
+                DataRow row = ds.Tables["HocSinh"].Rows[vt];
+                ds.Tables["HocSinh"].Rows.Remove(row);
+                SqlCommandBuilder b = new SqlCommandBuilder(adapter);
+
+                int kq = adapter.Update(ds.Tables["HocSinh"]);
+                if (kq > 0)
+                {
+                    loadThongTin();
+                    MessageBox.Show("Xóa không được");
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thành công");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Xóa thành công");
+                MessageBox.Show(ex.Message);
+                throw;
             }
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             DataRow row = ds.Tables["HocSinh"].Rows[vt];
-            row["Họ"] = txtHo.Text;
-            row["Tên"] = txtTen.Text;
-            row["Email"] = txtEmail.Text;
-            row["Ngày sinh"] = mtxtNgaySinh.Text;
-            row["Số điện thoại"] = txtSdt.Text;
-            row["Địa chỉ"] = txtDiaChi.Text;
-            row.EndEdit();
-            int kq = adapter.Update(ds.Tables["HocSinh"]);
-            if (kq > 0)
+
+            if (txtSdt.Text.Length != 10)
             {
-                loadThongTin();
-                MessageBox.Show("Sửa thành công");
+                MessageBox.Show("Kiểm tra số điện thoại");
+                return;
             }
             else
             {
-                MessageBox.Show("Sửa thất bại");
+                
+                int kq = adapter.Update(ds.Tables["HocSinh"]);
+                if (kq > 0)
+                {
+                    row["Họ"] = txtHo.Text;
+                    row["Tên"] = txtTen.Text;
+                    row["Email"] = txtEmail.Text;
+                    row["Ngày sinh"] = dtpNgaySinh.Text;
+                    row["Số điện thoại"] = txtSdt.Text;
+                    row["Địa chỉ"] = txtDiaChi.Text;
+                    row.EndEdit();
+                    loadThongTin();
+                    MessageBox.Show("Sửa thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại");
+                }
             }
         }
 
@@ -120,13 +162,36 @@ namespace Views
             txtHo.Text = row["Họ"].ToString();
             txtTen.Text = row["Tên"].ToString();
             txtEmail.Text = row["Email"].ToString();
-            mtxtNgaySinh.Text = row["Ngày sinh"].ToString();
+            dtpNgaySinh.Text = row["Ngày sinh"].ToString();
             txtSdt.Text = row["Số điện thoại"].ToString();
             txtDiaChi.Text = row["Địa chỉ"].ToString();
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void txtSdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = dtpNgaySinh.Value;
+            DateTime currentDate = DateTime.Now;
+
+            // So sánh ngày sinh với ngày hiện tại
+            if (selectedDate > currentDate)
+            {
+                MessageBox.Show("Ngày sinh không được lớn hơn ngày hiện tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Đặt lại ngày sinh thành ngày hiện tại
+                dtpNgaySinh.Value = currentDate;
+            }
         }
     }
 }

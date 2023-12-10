@@ -25,7 +25,7 @@ namespace Views
         void loadThongTin()
         {
             ds.Tables.Clear();
-            adapter = helper.GetDataAdapter("Select SachId as N'Mã sách', TenSach as N'Tên sách', TenTacgia as N'Tác giả', Gia as N'Giá' from Sach");
+            adapter = helper.GetDataAdapter("Select  TenSach as N'Tên sách', TenTacgia as N'Tác giả', Gia as N'Giá' from Sach");
             adapter.Fill(ds, "Sach");
             dgvThongTinSach.DataSource = ds.Tables["Sach"];
         }
@@ -90,13 +90,22 @@ namespace Views
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DataRow row = ds.Tables["Sach"].Rows[vt];
-            ds.Tables["Sach"].Rows.Remove(row);
-            SqlCommandBuilder b = new SqlCommandBuilder(adapter);
-            
-            int kq = adapter.Update(ds.Tables["Sach"]);
-            if (kq > 0) { MessageBox.Show("Xóa thành công"); }
-            else { MessageBox.Show("Xóa không được"); }
+            try
+            {
+                DataRow row = ds.Tables["Sach"].Rows[vt];
+                ds.Tables["Sach"].Rows.Remove(row);
+                SqlCommandBuilder b = new SqlCommandBuilder(adapter);
+
+                int kq = adapter.Update(ds.Tables["Sach"]);
+                if (kq > 0) { MessageBox.Show("Xóa thành công"); }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Sách có lưu trong hóa đơn, không xóa được");
+            }
+
+
         }
 
         private void label4_Click(object sender, EventArgs e)

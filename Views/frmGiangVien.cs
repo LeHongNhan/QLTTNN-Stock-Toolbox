@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,7 +24,13 @@ namespace Views
         {
             InitializeComponent();
         }
-
+        private bool IsValidEmail(string email)
+        {
+            // Biểu thức chính quy kiểm tra định dạng email
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
+        }
         void loadThongTin()
         {
             ds.Tables.Clear();
@@ -45,6 +52,19 @@ namespace Views
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            string emailAddress = txtEmail.Text.Trim();
+
+            // Kiểm tra định dạng email bằng biểu thức chính quy
+            if (!IsValidEmail(emailAddress))
+            {
+                MessageBox.Show("Email không hợp lệ!");
+                return;
+            }
+            if (txtSdt.Text.Length != 10)
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ!");
+                return;
+            }
             DataRow row = ds.Tables["GiaoVien"].NewRow();
             row["Họ"] = txtHo.Text;
             row["Tên"] = txtTen.Text;
@@ -80,20 +100,29 @@ namespace Views
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DataRow row = ds.Tables["GiaoVien"].Rows[vt];
-            ds.Tables["GiaoVien"].Rows.Remove(row);
-            SqlCommandBuilder b = new SqlCommandBuilder(adapter);
-
-            int kq = adapter.Update(ds.Tables["GiaoVien"]);
-            if (kq > 0) 
+            try
             {
-                loadThongTin();
-                MessageBox.Show("Xóa không được"); 
+                DataRow row = ds.Tables["GiaoVien"].Rows[vt];
+                ds.Tables["GiaoVien"].Rows.Remove(row);
+                SqlCommandBuilder b = new SqlCommandBuilder(adapter);
+
+                int kq = adapter.Update(ds.Tables["GiaoVien"]);
+                if (kq > 0)
+                {
+                    loadThongTin();
+                    MessageBox.Show("Xóa không được");
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thành công");
+                }
             }
-            else 
-            { 
-                MessageBox.Show("Xóa thành công"); 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
             }
+
         }
 
         private void dgvDS_CellClick(object sender, DataGridViewCellEventArgs e)

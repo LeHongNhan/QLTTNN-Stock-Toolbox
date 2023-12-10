@@ -40,18 +40,6 @@ namespace Views
 
         int vt;
 
-        private void dgvDS_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex == -1)
-            {
-                return;
-            }
-            vt = e.RowIndex;
-            DataRow row = ds.Tables["DoTuoi"].Rows[vt];
-
-            txtTenDoTuoi.Text = row["Tên độ tuổi"].ToString();
-        }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             DataRow row = ds.Tables["DoTuoi"].NewRow();
@@ -85,7 +73,7 @@ namespace Views
             DataRow row = ds.Tables["DoTuoi"].Rows[vt];
             ds.Tables["DoTuoi"].Rows.Remove(row);
             SqlCommandBuilder b = new SqlCommandBuilder(adapter);
-
+            adapter.Update(ds.Tables["DoTuoi"]);
             int kq = adapter.Update(ds.Tables["DoTuoi"]);
             if (kq > 0)
             {
@@ -96,7 +84,40 @@ namespace Views
             {
                 MessageBox.Show("Xóa thành công");
             }
+
         }
 
+        private void dgvDS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public static int indexDoTuoi = -1;
+        private void dgvDS_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy giá trị từ cột "tenCapDo" của dòng được chọn
+                object cellValue = dgvDS.Rows[e.RowIndex].Cells["Tên độ tuổi"].Value;
+                indexDoTuoi = e.RowIndex;
+                vt = e.RowIndex;
+                // Kiểm tra nếu giá trị không phải là null
+                if (cellValue != null)
+                {
+                    // Gán giá trị từ cell vào TextBox
+                    txtTenDoTuoi.Text = cellValue.ToString();
+                }
+            }
+        }
+
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            if (indexDoTuoi == -1)
+            {
+                return;
+            }
+            object cellValue = dgvDS.Rows[indexDoTuoi].Cells["Mã độ tuổi"].Value;
+            frmKhoaHoc.maDoTuoi = int.Parse(cellValue.ToString());
+            Close();
+        }
     }
 }

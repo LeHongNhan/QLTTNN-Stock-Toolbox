@@ -37,10 +37,8 @@
             this.dgvDanhSachLop = new System.Windows.Forms.DataGridView();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtHocPhi = new System.Windows.Forms.TextBox();
-            this.txtMaLop = new System.Windows.Forms.TextBox();
             this.txtTenLop = new System.Windows.Forms.TextBox();
             this.lblGiaoVien = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblHocPhi = new System.Windows.Forms.Label();
             this.lblTenLop = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -49,6 +47,8 @@
             this.cboGiangVien = new System.Windows.Forms.ComboBox();
             this.cboKhoa = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMaLop = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachLop)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -156,14 +156,6 @@
             this.txtHocPhi.Size = new System.Drawing.Size(217, 22);
             this.txtHocPhi.TabIndex = 3;
             // 
-            // txtMaLop
-            // 
-            this.txtMaLop.Enabled = false;
-            this.txtMaLop.Location = new System.Drawing.Point(140, 28);
-            this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Size = new System.Drawing.Size(217, 22);
-            this.txtMaLop.TabIndex = 1;
-            // 
             // txtTenLop
             // 
             this.txtTenLop.Location = new System.Drawing.Point(140, 60);
@@ -181,17 +173,6 @@
             this.lblGiaoVien.Size = new System.Drawing.Size(79, 20);
             this.lblGiaoVien.TabIndex = 4;
             this.lblGiaoVien.Text = "Giáo viên";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(9, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Mã lớp";
             // 
             // lblHocPhi
             // 
@@ -285,6 +266,25 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách lớp";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(9, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Mã lớp";
+            // 
+            // txtMaLop
+            // 
+            this.txtMaLop.Enabled = false;
+            this.txtMaLop.Location = new System.Drawing.Point(140, 28);
+            this.txtMaLop.Name = "txtMaLop";
+            this.txtMaLop.Size = new System.Drawing.Size(217, 22);
+            this.txtMaLop.TabIndex = 1;
+            // 
             // frmLop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -315,10 +315,8 @@
         private System.Windows.Forms.DataGridView dgvDanhSachLop;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtHocPhi;
-        private System.Windows.Forms.TextBox txtMaLop;
         private System.Windows.Forms.TextBox txtTenLop;
         private System.Windows.Forms.Label lblGiaoVien;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblHocPhi;
         private System.Windows.Forms.Label lblTenLop;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -327,5 +325,7 @@
         private System.Windows.Forms.ComboBox cboGiangVien;
         private System.Windows.Forms.DateTimePicker dtpNgayBatDau;
         private System.Windows.Forms.DateTimePicker dtpNgayKetThuc;
+        private System.Windows.Forms.TextBox txtMaLop;
+        private System.Windows.Forms.Label label4;
     }
 }

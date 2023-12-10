@@ -34,7 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.lblTen = new System.Windows.Forms.Label();
-            this.mtxtNgaySinh = new System.Windows.Forms.MaskedTextBox();
             this.txtHo = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4.SuspendLayout();
@@ -79,6 +79,7 @@
             this.txtSdt.Name = "txtSdt";
             this.txtSdt.Size = new System.Drawing.Size(217, 22);
             this.txtSdt.TabIndex = 11;
+            this.txtSdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSdt_KeyPress);
             // 
             // label3
             // 
@@ -108,15 +109,6 @@
             this.lblTen.Size = new System.Drawing.Size(37, 20);
             this.lblTen.TabIndex = 8;
             this.lblTen.Text = "Tên";
-            // 
-            // mtxtNgaySinh
-            // 
-            this.mtxtNgaySinh.Location = new System.Drawing.Point(158, 109);
-            this.mtxtNgaySinh.Mask = "00/00/0000";
-            this.mtxtNgaySinh.Name = "mtxtNgaySinh";
-            this.mtxtNgaySinh.Size = new System.Drawing.Size(217, 22);
-            this.mtxtNgaySinh.TabIndex = 7;
-            this.mtxtNgaySinh.ValidatingType = typeof(System.DateTime);
             // 
             // txtHo
             // 
@@ -237,13 +229,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dtpNgaySinh);
             this.groupBox2.Controls.Add(this.txtDiaChi);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtSdt);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtTen);
             this.groupBox2.Controls.Add(this.lblTen);
-            this.groupBox2.Controls.Add(this.mtxtNgaySinh);
             this.groupBox2.Controls.Add(this.txtHo);
             this.groupBox2.Controls.Add(this.txtEmail);
             this.groupBox2.Controls.Add(this.label5);
@@ -255,6 +247,14 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin học viên";
+            // 
+            // dtpNgaySinh
+            // 
+            this.dtpNgaySinh.Location = new System.Drawing.Point(156, 109);
+            this.dtpNgaySinh.Name = "dtpNgaySinh";
+            this.dtpNgaySinh.Size = new System.Drawing.Size(215, 22);
+            this.dtpNgaySinh.TabIndex = 14;
+            this.dtpNgaySinh.ValueChanged += new System.EventHandler(this.dtpNgaySinh_ValueChanged);
             // 
             // label6
             // 
@@ -309,7 +309,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.Label lblTen;
-        private System.Windows.Forms.MaskedTextBox mtxtNgaySinh;
         private System.Windows.Forms.TextBox txtHo;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
@@ -324,5 +323,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DateTimePicker dtpNgaySinh;
     }
 }

@@ -36,7 +36,7 @@ namespace BLL_DAL
         public int luuThongTin()
         {
             SQLHelper h = new SQLHelper();
-            string sql = "Update NguoiDung Set HoTen = '" + hoTen + "', DiaChi = '" + diaChi + "', GioiTinh = '" + gioiTinh + "', SoDienThoai = '" + soDienThoai + "' where TenDangNhap = '" + tenDangNhap + "'";
+            string sql = "Update NguoiDung Set HoTen = N'" + hoTen + "', DiaChi = '" + diaChi + "', GioiTinh = '" + gioiTinh + "', SoDienThoai = '" + soDienThoai + "' where TenDangNhap = '" + tenDangNhap + "'";
             return h.getNonQuery(sql);
         }
     }

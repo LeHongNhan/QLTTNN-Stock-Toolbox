@@ -6,22 +6,22 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.01833in</Width>
+              <Width>1.10101in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01833in</Width>
+              <Width>1.10101in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01833in</Width>
+              <Width>1.10101in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01833in</Width>
+              <Width>0.78435in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.01833in</Width>
+              <Width>0.79268in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.09167in</Width>
+              <Width>1.79935in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -196,7 +196,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tên học sinh</Value>
+                              <Value>Tên học viên</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -232,7 +232,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!HoaDonID.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -262,7 +264,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TenLop.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -292,7 +296,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TenSach.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -322,7 +328,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!SoLuong.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -352,7 +360,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TongTien.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -382,7 +392,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TenHocSinh.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -427,10 +439,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.06944in</Top>
-        <Left>0.14167in</Left>
+        <Top>0.05556in</Top>
+        <Left>0.16224in</Left>
         <Height>0.5in</Height>
-        <Width>6.18333in</Width>
+        <Width>6.67942in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -438,13 +450,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.95833in</Height>
+    <Height>0.98056in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>7.42167in</Width>
   <Page>
     <PageHeader>
-      <Height>1.08in</Height>
+      <Height>2.53833in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -455,7 +467,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Hóa đơn </Value>
+                  <Value>HÓA ĐƠN THANH TOÁN</Value>
                   <Style>
                     <FontSize>20pt</FontSize>
                   </Style>
@@ -467,10 +479,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.25833in</Top>
+          <Top>0.89389in</Top>
           <Left>0.14167in</Left>
           <Height>0.39722in</Height>
-          <Width>6.18333in</Width>
+          <Width>6.69999in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -488,6 +500,10 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
+                  <Value>Ngày xuất hóa đơn</Value>
+                  <Style />
+                </TextRun>
+                <TextRun>
                   <Value>=Globals!ExecutionTime</Value>
                   <Style />
                 </TextRun>
@@ -496,10 +512,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
-          <Top>0.71111in</Top>
-          <Left>4.98333in</Left>
-          <Height>0.29944in</Height>
-          <Width>1.34167in</Width>
+          <Top>1.31889in</Top>
+          <Left>4.34166in</Left>
+          <Height>0.20777in</Height>
+          <Width>2.49999in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -511,6 +527,127 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Trung Tâm Ngoại Ngữ</Value>
+                  <Style>
+                    <FontSize>15pt</FontSize>
+                    <FontWeight>Heavy</FontWeight>
+                    <Color>Blue</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.13in</Top>
+          <Left>0.14167in</Left>
+          <Height>0.30833in</Height>
+          <Width>6.69999in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Địa chỉ:140 Lê Trọng Tấn, Tây Thạnh, Tân Phú, Hồ Chí Minh</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
+          <Top>0.43833in</Top>
+          <Left>0.14167in</Left>
+          <Height>0.19167in</Height>
+          <Width>6.69999in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox4">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>SDT:0372880194</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value />
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.64389in</Top>
+          <Left>0.14167in</Left>
+          <Height>0.25in</Height>
+          <Width>6.69999in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line1">
+          <Top>0.86611in</Top>
+          <Left>2.89667in</Left>
+          <Height>0in</Height>
+          <Width>1.18333in</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
       </ReportItems>
       <Style>
         <Border>
@@ -519,7 +656,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1in</Height>
+      <Height>1.1in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

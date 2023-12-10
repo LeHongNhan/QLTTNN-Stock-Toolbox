@@ -54,7 +54,7 @@ namespace Views
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            DataRow row = ds.Tables["cCapDo"].NewRow();
+            DataRow row = ds.Tables["CapDo"].NewRow();
             row["Tên cấp độ"] = txtTenCapDo.Text;
             
             ds.Tables["CapDo"].Rows.Add(row);
@@ -97,17 +97,32 @@ namespace Views
                 MessageBox.Show("Xóa thành công");
             }
         }
-
+        int indexCapDo = -1;
         private void dgvDS_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy giá trị từ cột "tenCapDo" của dòng được chọn
+                object cellValue = dgvDS.Rows[e.RowIndex].Cells["Tên cấp độ"].Value;
+                indexCapDo = e.RowIndex;
+                // Kiểm tra nếu giá trị không phải là null
+                if (cellValue != null)
+                {
+                    // Gán giá trị từ cell vào TextBox
+                    txtTenCapDo.Text = cellValue.ToString();
+                }
+            }
+        }
+
+        private void btnChon_Click(object sender, EventArgs e)
+        {
+            if (indexCapDo == -1)
             {
                 return;
             }
-            vt = e.RowIndex;
-            DataRow row = ds.Tables["CapDo"].Rows[vt];
-
-            txtTenCapDo.Text = row["Tên cấp độ"].ToString();
+            object cellValue = dgvDS.Rows[indexCapDo].Cells["Mã cấp độ"].Value;
+            frmKhoaHoc.maCapDo = int.Parse(cellValue.ToString());
+            Close();
         }
     }
 }

@@ -86,7 +86,7 @@
     <Compile Include="frmCapDo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCapDo.Designer.cs">
+    <Compile Include="frmCapDo.designer.cs">
       <DependentUpon>frmCapDo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmChonGV.cs">
@@ -122,7 +122,7 @@
     <Compile Include="frmDoTuoi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDoTuoi.Designer.cs">
+    <Compile Include="frmDoTuoi.designer.cs">
       <DependentUpon>frmDoTuoi.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGiangVien.cs">

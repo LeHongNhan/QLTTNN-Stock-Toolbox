@@ -26,7 +26,7 @@ namespace Views
         private void Lop_load()
         {
             SQLHelper hp = new SQLHelper();
-             data = hp.getDatatable("SELECT Lop.LopID as N'Mã lớp', TenLop as N'Tên lớp', NgayBatDau as N'Ngày bắt đầu', NgayKetThuc as N'Ngày kết thúc', HocPhi as N'Học phí', gv.Ho + ' ' + gv.Ten as N'Tên giáo viên', Khoa.MoTa as N'Khóa' FROM Lop INNER JOIN GiaoVien gv ON Lop.GiaoVienID = gv.GiaoVienID INNER JOIN Khoa ON Lop.KhoaID = Khoa.KhoaID");
+             data = hp.getDatatable("SELECT LopID as N'Mã lớp', TenLop as N'Tên lớp', NgayBatDau as N'Ngày bắt đầu', NgayKetThuc as N'Ngày kết thúc', HocPhi as N'Học phí', gv.Ho + ' ' + gv.Ten as N'Tên giáo viên', Khoa.MoTa as N'Khóa' FROM Lop INNER JOIN GiaoVien gv ON Lop.GiaoVienID = gv.GiaoVienID INNER JOIN Khoa ON Lop.KhoaID = Khoa.KhoaID");
             DataView dataView = new DataView(data);
             dgvDanhSachLop.DataSource = dataView;
             DataColumn[] key = new DataColumn[1];
